@@ -5,6 +5,8 @@ import '../widgets/category_card.dart';
 import 'meals_screen.dart';
 import 'meal_detail_screen.dart';
 import '../models/meal.dart';
+import '../services/firebase_service.dart';
+
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
@@ -23,6 +25,13 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   void initState() {
     super.initState();
     _loadCategories();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await FirebaseService.showLocalNotification(
+        'Random recipe',
+        'Open the app to see today\'s recipe',
+      );
+    });
   }
 
   Future<void> _loadCategories() async {

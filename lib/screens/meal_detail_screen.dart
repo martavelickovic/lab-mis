@@ -4,7 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
-  const MealDetailScreen({super.key});
+  final Meal meal;
+  const MealDetailScreen({super.key, required this.meal});
 
   @override
   Widget build(BuildContext context) {
